@@ -1,0 +1,82 @@
+Null values
+
+
+
+first always check for null data values
+    data.isnull().sum()
+    if there are less null values say 50-100 in 1000 just use
+    data.dropna()
+    for leaving the values with just only one nan use df.dropna(how="all")
+    if we have missing values in the form na,n/a anol
+      just assign them first then once done
+        there is an argument na_values = assign this
+         missing_value = ["Na","n/a"]
+         pd.read_csv("ss",na_values=missing_values)
+         df.interpolate()
+         
+another way is to visualize those null values
+  using
+   sns.heatmap(data.isnull(),yticklabels=False,annot=True) annot gives us the number of missing values
+
+incase if there are many values just assign the average to them
+     say incase if we have many age missing
+       use data.describe() and choosee the avg and assign it
+       
+outliers
+
+ An easy way to find an outlier is using box plot
+ then quantiling the data
+    Q1 = data.quantile(0.25)
+    Q3 = data.quantile(0.75)
+    IQR = Q3-Q1
+    
+  print(data <(Q1 - 1.5 * IQR))or (data >(Q1 + 1.5 * IQR)) 
+  
+  once if it is found
+    for replacing outliers use
+       data['Age'].quantile(0.5)
+       data['Age'].quantile(0.75)
+       data['Age'].quantile(0.5)
+them
+  data['Age'] = np.where(data['Age']>54, 35.0,data['Age'])
+   then verify it using box plot and describe
+    continue this for other available outliers
+    
+    
+    
+    some other data problems
+      inconsistent column names
+      missing data
+      untidy data set
+      outliers 
+      duplicate
+      
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
